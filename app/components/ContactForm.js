@@ -2,7 +2,13 @@
 
 import { useState } from "react";
 
-const INITIAL_FORM = { name: "", email: "", service: "Graphic Design", message: "" };
+const INITIAL_FORM = {
+  name: "",
+  email: "",
+  service: "Graphic Design",
+  message: "",
+  website: "",
+};
 
 export default function ContactForm() {
   const [form, setForm] = useState(INITIAL_FORM);
@@ -42,11 +48,25 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="sr-only" aria-hidden="true">
+        <label htmlFor="contact-website">Website</label>
+        <input
+          id="contact-website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={form.website}
+          onChange={(event) => updateField("website", event.target.value)}
+        />
+      </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="space-y-2">
           <label className="ml-1 text-sm font-bold text-slate-300">Name</label>
           <input
             required
+            minLength={2}
+            maxLength={100}
             className="w-full rounded-xl border border-white/10 bg-background-dark p-4 text-white outline-none focus:border-primary focus:ring-1 focus:ring-primary"
             placeholder="Your Name"
             type="text"
@@ -58,6 +78,7 @@ export default function ContactForm() {
           <label className="ml-1 text-sm font-bold text-slate-300">Email</label>
           <input
             required
+            maxLength={254}
             className="w-full rounded-xl border border-white/10 bg-background-dark p-4 text-white outline-none focus:border-primary focus:ring-1 focus:ring-primary"
             placeholder="email@example.com"
             type="email"
@@ -84,6 +105,8 @@ export default function ContactForm() {
         <label className="ml-1 text-sm font-bold text-slate-300">Message</label>
         <textarea
           required
+          minLength={10}
+          maxLength={5000}
           className="w-full rounded-xl border border-white/10 bg-background-dark p-4 text-white outline-none focus:border-primary focus:ring-1 focus:ring-primary"
           placeholder="Tell me about your project..."
           rows="5"
