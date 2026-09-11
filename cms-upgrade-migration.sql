@@ -50,6 +50,10 @@ end $$;
 
 alter table reviews add column if not exists sort_order integer not null default 0;
 alter table reviews add column if not exists project_id uuid references projects(id) on delete set null;
+alter table reviews add column if not exists rating numeric(2,1) not null default 4.9;
+update reviews set rating = 4.9 where rating is null;
+alter table reviews alter column rating set default 4.9;
+alter table reviews alter column rating set not null;
 
 do $$
 begin
@@ -57,6 +61,15 @@ begin
     select 1 from pg_constraint where conname = 'projects_status_check'
   ) then
     alter table projects add constraint projects_status_check check (status in ('draft', 'published'));
+  end if;
+
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'reviews_rating_check'
+      and conrelid = 'reviews'::regclass
+  ) then
+    alter table reviews add constraint reviews_rating_check check (rating >= 1 and rating <= 5);
   end if;
 end $$;
 

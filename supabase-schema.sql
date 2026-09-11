@@ -48,8 +48,10 @@ create table if not exists reviews (
   role text,
   message text not null,
   avatar_url text,
+  rating numeric(2,1) not null default 4.9,
   published boolean default true,
-  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  constraint reviews_rating_check check (rating >= 1 and rating <= 5)
 );
 
 -- 5. Create Contacts Table
@@ -130,6 +132,22 @@ alter table projects add column if not exists slug text;
 
 alter table reviews add column if not exists sort_order integer not null default 0;
 alter table reviews add column if not exists project_id uuid references projects(id) on delete set null;
+alter table reviews add column if not exists rating numeric(2,1) not null default 4.9;
+update reviews set rating = 4.9 where rating is null;
+alter table reviews alter column rating set default 4.9;
+alter table reviews alter column rating set not null;
+
+do $$
+begin
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'reviews_rating_check'
+      and conrelid = 'reviews'::regclass
+  ) then
+    alter table reviews add constraint reviews_rating_check check (rating >= 1 and rating <= 5);
+  end if;
+end $$;
 
 create table if not exists services (
   id uuid primary key default gen_random_uuid(),

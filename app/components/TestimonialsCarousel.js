@@ -80,6 +80,8 @@ export default function TestimonialsCarousel({ reviews }) {
               <div className="relative flex h-full items-center">
                 {reviews.map((review, index) => {
                   const isActive = index === activeIndex;
+                  const rating = Number(review.rating);
+                  const displayRating = Number.isFinite(rating) && rating >= 1 && rating <= 5 ? rating.toFixed(1) : "4.9";
 
                   return (
                     <button
@@ -103,7 +105,7 @@ export default function TestimonialsCarousel({ reviews }) {
                         </span>
                         <span className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px] font-semibold text-slate-400">
                           <span className="text-base leading-none text-primary">★</span>
-                          <span className="font-black text-primary">4.9</span>
+                          <span className="font-black text-primary">{displayRating}</span>
                           <span>on {formatReviewDate(review.created_at)}</span>
                         </span>
                       </span>

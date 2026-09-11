@@ -3,7 +3,8 @@ import { supabaseAdmin } from "@/lib/supabase";
 import { NextResponse } from "next/server";
 
 function cleanReview(body = {}) {
-  const rating = Number(body.rating);
+  const ratingIsEmpty = body.rating == null || (typeof body.rating === "string" && body.rating.trim() === "");
+  const rating = ratingIsEmpty ? Number.NaN : Number(body.rating);
 
   return {
     name: String(body.name || "").trim(),
