@@ -5,8 +5,6 @@ import JsonLdScript from "../components/JsonLdScript";
 import { getPageMeta, toMetadata } from "@/lib/pageMeta";
 import { getArticleSchema } from "@/lib/schema";
 
-export const dynamic = "force-dynamic";
-
 export async function generateMetadata() {
   return toMetadata(await getPageMeta("case-studies"), "/case-studies");
 }

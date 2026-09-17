@@ -71,12 +71,12 @@ export default function TestimonialsCarousel({ reviews }) {
         <div className="relative min-h-[30rem] overflow-hidden rounded-[2px] border border-white/10 bg-surface px-7 py-12 shadow-[0_30px_90px_rgba(0,0,0,0.42)] md:px-14 lg:min-h-[31rem] lg:px-20 lg:py-16">
           <div className="mb-12">
             <div className="mb-3 h-1 w-11 bg-primary" />
-            <p className="text-base font-black tracking-tight text-white">Customer Reviews</p>
+            <p className="text-base font-black tracking-tight text-white">Client Reviews</p>
           </div>
 
           <div className="grid min-h-[18rem] items-center gap-12 lg:grid-cols-[0.9fr_1.35fr] lg:gap-20">
             <div className="relative mx-auto h-60 w-full max-w-sm md:-ml-8">
-              <div className="absolute left-12 top-1/2 h-[18rem] w-28 -translate-y-1/2 rounded-l-full border-l border-slate-600/60" />
+              <div className="absolute left-12 top-1/2 h-[18rem] w-32 -translate-y-1/2 rounded-l-full border-l border-slate-600/60" />
               <div className="relative flex h-full items-center">
                 {reviews.map((review, index) => {
                   const isActive = index === activeIndex;
@@ -115,34 +115,61 @@ export default function TestimonialsCarousel({ reviews }) {
               </div>
             </div>
 
-            <figure className={`relative flex min-h-64 max-w-2xl flex-col justify-center transition-all duration-700 ease-out lg:pt-8 ${activeIndex === displayIndex ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}>
-              <span className="absolute -left-9 top-0 text-5xl font-black leading-none text-primary">“</span>
-              <blockquote className="min-h-32 font-serif text-base italic leading-8 text-slate-100 md:text-lg md:leading-9">
-                {quote && (
-                  <>
-                    <span className="font-sans text-4xl font-black not-italic leading-none text-primary">{quote.charAt(0)}</span>
-                    {quote.slice(1)}
-                  </>
+            <figure className={`relative grid min-h-64 max-w-2xl transition-all duration-700 ease-out lg:pt-8 ${activeIndex === displayIndex ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}>
+              <div className="invisible col-start-1 row-start-1 grid" aria-hidden="true">
+                {reviews.map((review, index) => {
+                  const sizingQuote = review.message || "";
+
+                  return (
+                    <div key={review.id || `${review.name}-size-${index}`} className="col-start-1 row-start-1 flex flex-col justify-center">
+                      <blockquote className="min-h-32 font-serif text-base italic leading-8 md:text-lg md:leading-9">
+                        {sizingQuote && (
+                          <>
+                            <span className="font-sans text-4xl font-black not-italic leading-none">{sizingQuote.charAt(0)}</span>
+                            {sizingQuote.slice(1)}
+                          </>
+                        )}
+                      </blockquote>
+                      {review.role && (
+                        <div className="mt-7 text-sm font-bold uppercase tracking-[0.22em]">
+                          {review.role}
+                        </div>
+                      )}
+                      {reviewCount > 3 && <div className="mt-9 h-1.5" />}
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="relative col-start-1 row-start-1 flex flex-col justify-center">
+                <span className="absolute -left-9 top-0 text-5xl font-black leading-none text-primary">“</span>
+                <blockquote className="min-h-32 font-serif text-base italic leading-8 text-slate-100 md:text-lg md:leading-9">
+                  {quote && (
+                    <>
+                      <span className="font-sans text-4xl font-black not-italic leading-none text-primary">{quote.charAt(0)}</span>
+                      {quote.slice(1)}
+                    </>
+                  )}
+                </blockquote>
+                {activeReview.role && (
+                  <figcaption className="mt-7 text-sm font-bold uppercase tracking-[0.22em] text-primary">
+                    {activeReview.role}
+                  </figcaption>
                 )}
-              </blockquote>
-              {activeReview.role && (
-                <figcaption className="mt-7 text-sm font-bold uppercase tracking-[0.22em] text-primary">
-                  {activeReview.role}
-                </figcaption>
-              )}
-              {reviewCount > 3 && (
-                <div className="mt-9 flex flex-wrap gap-2" aria-label="Testimonial slides">
-                  {reviews.map((review, index) => (
-                    <button
-                      key={review.id || `${review.name}-dot-${index}`}
-                      type="button"
-                      onClick={() => setActiveIndex(index)}
-                      className={`h-1.5 rounded-full transition-all ${index === activeIndex ? "w-8 bg-primary" : "w-3 bg-white/20 hover:bg-primary/60"}`}
-                      aria-label={`Show review from ${review.name || "client"}`}
-                    />
-                  ))}
-                </div>
-              )}
+                {reviewCount > 3 && (
+                  <div className="mt-9 flex flex-wrap gap-2" aria-label="Testimonial slides">
+                    {reviews.map((review, index) => (
+                      <button
+                        key={review.id || `${review.name}-dot-${index}`}
+                        type="button"
+                        onClick={() => setActiveIndex(index)}
+                        className={`h-1.5 rounded-full transition-all ${index === activeIndex ? "w-8 bg-primary" : "w-3 bg-white/20 hover:bg-primary/60"}`}
+                        aria-label={`Show review from ${review.name || "client"}`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
             </figure>
           </div>
         </div>

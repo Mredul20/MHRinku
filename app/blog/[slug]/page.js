@@ -1,14 +1,17 @@
+import { cache } from "react";
 import { notFound } from "next/navigation";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import SmartImage from "../../components/SmartImage";
 import { getCanonicalUrl } from "@/lib/pageMeta";
-import { cleanReachableImageSrc } from "@/lib/urlHealth";
+import { normalizeImage } from "@/lib/validators";
 import { supabaseAdmin } from "@/lib/supabase";
 
-export const dynamic = "force-dynamic";
+export async function generateStaticParams() {
+  return [];
+}
 
-async function getBlog(slug) {
+const getBlog = cache(async (slug) => {
   try {
     let { data, error } = await supabaseAdmin
       .from("blogs")
@@ -35,12 +38,12 @@ async function getBlog(slug) {
 
     return {
       ...data,
-      featuredImage: await cleanReachableImageSrc(data.featuredImage),
+      featuredImage: normalizeImage(data.featuredImage).url,
     };
   } catch {
     return null;
   }
-}
+});
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;

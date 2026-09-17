@@ -73,8 +73,6 @@ const faqs = [
   },
 ];
 
-export const dynamic = "force-dynamic";
-
 export default function WebDesignServicesBangladeshPage() {
   const serviceSchema = getServiceSchema({
     title: "Web Design Services Bangladesh",

@@ -6,8 +6,6 @@ export async function generateMetadata() {
   return toMetadata(await getPageMeta("graphic-design-services-bangladesh"), "/graphic-design-services-bangladesh");
 }
 
-export const dynamic = "force-dynamic";
-
 export default function GraphicDesignServicesBangladeshPage() {
   return <ServicePage config={servicePageConfigs["graphic-design-services-bangladesh"]} pathname="/graphic-design-services-bangladesh" />;
 }

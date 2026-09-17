@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import MobileCarousel from "../components/MobileCarousel";
 import SmartImage from "../components/SmartImage";
 import { getCanonicalUrl } from "@/lib/pageMeta";
-import { cleanReachableImageSrc } from "@/lib/urlHealth";
+import { normalizeImage } from "@/lib/validators";
 import { supabaseAdmin } from "@/lib/supabase";
 
 export const metadata = {
@@ -12,8 +12,6 @@ export const metadata = {
   description: "Insights on Meta Ads, web design, and digital marketing by Mobarak Hossain Rinku.",
   alternates: { canonical: getCanonicalUrl("/blog") },
 };
-
-export const dynamic = "force-dynamic";
 
 async function getBlogs() {
   try {
@@ -36,10 +34,10 @@ async function getBlogs() {
 
     if (error) return [];
 
-    return await Promise.all((data ?? []).map(async (blog) => ({
+    return (data ?? []).map((blog) => ({
       ...blog,
-      featuredImage: await cleanReachableImageSrc(blog.featuredImage),
-    })));
+      featuredImage: normalizeImage(blog.featuredImage).url,
+    }));
   } catch {
     return [];
   }

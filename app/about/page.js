@@ -12,8 +12,6 @@ export async function generateMetadata() {
   }), "/about");
 }
 
-export const dynamic = "force-dynamic";
-
 async function getAboutSettings() {
   try {
     const { data, error } = await supabaseAdmin

@@ -4,13 +4,10 @@ import { DEFAULT_SERVICES, DEFAULT_SKILLS, DEFAULT_STATS } from "@/lib/cmsFallba
 import { getPageMeta, toMetadata } from "@/lib/pageMeta";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
-import MobileCarousel from "../components/MobileCarousel";
 import Navbar from "../components/Navbar";
 import ProjectGrid from "../components/ProjectGrid";
 import SmartImage from "../components/SmartImage";
 import TestimonialsCarousel from "../components/TestimonialsCarousel";
-
-export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
   return toMetadata(await getPageMeta("index"), "/");
@@ -72,32 +69,6 @@ async function getReviews() {
     if (error && (error.message?.includes("deleted_at") || error.message?.includes("sort_order"))) {
       const fallback = await supabaseAdmin
         .from("reviews")
-        .select("*")
-        .eq("published", true)
-        .order("created_at", { ascending: false });
-      data = fallback.data;
-      error = fallback.error;
-    }
-
-    if (error) return [];
-    return data ?? [];
-  } catch {
-    return [];
-  }
-}
-
-async function getTeamMembers() {
-  try {
-    let { data, error } = await supabaseAdmin
-      .from("team_members")
-      .select("*")
-      .eq("published", true)
-      .is("deleted_at", null)
-      .order("created_at", { ascending: false });
-
-    if (error && error.message?.includes("deleted_at")) {
-      const fallback = await supabaseAdmin
-        .from("team_members")
         .select("*")
         .eq("published", true)
         .order("created_at", { ascending: false });
@@ -182,11 +153,10 @@ const floatingLogos = [
 ];
 
 export default async function Home() {
-  const [projects, settings, reviews, teamMembers, services, stats, skills] = await Promise.all([
+  const [projects, settings, reviews, services, stats, skills] = await Promise.all([
     getProjects(),
     getSettings(),
     getReviews(),
-    getTeamMembers(),
     getServices(),
     getStats(),
     getSkills(),
@@ -212,8 +182,8 @@ export default async function Home() {
                 <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" /><span className="relative inline-flex h-2 w-2 rounded-full bg-primary" /></span>
                 Available for new projects
               </div>
-              <h1 className="mb-6 text-[56px] font-black leading-[0.9] tracking-tighter md:text-[68px] lg:text-[92px]">
-                Mobarak Hossain Rinku — <span className="text-primary">Web Designer Bangladesh, Dhaka.</span>
+              <h1 className="mb-6 text-4xl font-black leading-[0.95] tracking-tighter md:text-5xl lg:text-6xl">
+                Mobarak Hossain Rinku <span className="text-primary">Web Designer in Dhaka.</span>
               </h1>
               <p className="mb-8 max-w-xl text-xl font-medium leading-relaxed text-slate-400 md:text-2xl">
                 Graphic Designer <span className="text-primary/50">|</span> Web Designer <span className="text-primary/50">|</span> Ads Manager.
@@ -245,8 +215,8 @@ export default async function Home() {
               <h2 className="mb-3 text-sm font-bold uppercase tracking-widest text-primary">Expertise</h2>
               <h3 className="text-4xl font-black md:text-5xl">My Specialized Services</h3>
             </div>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-              {services.map((service, index) => (
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {services.filter((service) => service.slug !== "ui-design").map((service, index) => (
                 <Link key={service.slug || service.href} href={service.href || `/${service.slug}`} style={{ animationDelay: `${index * 120}ms` }} className="service-card service-card-animate group flex h-full cursor-pointer flex-col gap-6 rounded-2xl border border-white/5 bg-surface p-8 transition-all duration-300 hover:no-underline">
                   <div className="flex size-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-300 group-hover:border group-hover:border-primary group-hover:bg-[#C6A75E] group-hover:text-background-dark"><span className="material-symbols-outlined text-4xl">{service.icon}</span></div>
                   <div className="flex flex-1 flex-col">
@@ -299,10 +269,6 @@ export default async function Home() {
         <section className="py-24" id="portfolio"><div className="mx-auto max-w-7xl px-6"><div className="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><h2 className="mb-3 text-sm font-bold uppercase tracking-widest text-primary">Portfolio</h2><h3 className="text-4xl font-black text-white md:text-5xl">Featured Projects</h3></div></div><ProjectGrid initialProjects={projects} /></div></section>
 
         {reviews.length > 0 && <section id="testimonials"><TestimonialsCarousel reviews={reviews} /></section>}
-
-        {teamMembers.length > 0 && (
-          <section className="py-24" id="team"><div className="mx-auto max-w-7xl px-6"><div className="mb-16 text-center"><h2 className="mb-3 text-sm font-bold uppercase tracking-widest text-primary">Team</h2><h3 className="text-4xl font-black text-white md:text-5xl">Meet the Team</h3></div><MobileCarousel className="no-scrollbar mx-auto flex max-w-7xl gap-4 overflow-x-auto snap-x snap-mandatory pb-2 lg:grid lg:grid-cols-3 lg:overflow-visible" interval={3200}>{teamMembers.slice(0, 4).map((member) => <Link key={member.id} data-carousel-card href={`/team/${member.id}`} className="group grid min-w-10/12 snap-center grid-cols-[45%_55%] overflow-hidden rounded-xl border border-white/5 bg-surface transition-all hover:-translate-y-1 hover:border-primary/40 hover:no-underline lg:min-w-0"><div className="min-h-36 overflow-hidden bg-background-dark sm:min-h-44">{member.photo_url ? <SmartImage src={member.photo_url} alt={member.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" /> : <div className="flex h-full w-full items-center justify-center text-4xl font-black text-primary sm:text-5xl">{member.name?.charAt(0)}</div>}</div><div className="flex min-h-36 flex-col justify-center p-3 sm:min-h-44 sm:p-4"><h4 className="text-lg font-black text-white transition-colors group-hover:text-primary sm:text-xl">{member.name}</h4><p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-primary sm:text-xs">{member.role}</p>{member.bio && <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-muted sm:mt-3 sm:text-sm">{member.bio}</p>}<span className="mt-3 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-primary opacity-0 transition-opacity group-hover:opacity-100 sm:text-xs">View Details <span className="material-symbols-outlined text-sm">arrow_forward</span></span></div></Link>)}</MobileCarousel></div></section>
-        )}
 
         <section className="py-14" id="contact"><div className="mx-auto max-w-7xl px-6"><div className="grid grid-cols-1 gap-16 lg:grid-cols-2"><div><h2 className="mb-3 text-sm font-bold uppercase tracking-widest text-primary">Get in touch</h2><h3 className="mb-8 text-5xl font-black text-white">Let&apos;s build something great.</h3><p className="mb-12 max-w-md text-lg leading-relaxed text-muted">Ready to scale your business or start a new creative project? Reach out and let&apos;s discuss how I can help you achieve your goals.</p><div className="space-y-8"><div className="flex items-center gap-6"><div className="flex size-14 items-center justify-center rounded-xl border border-white/5 bg-surface text-primary"><svg viewBox="0 0 24 24" aria-hidden="true" className="size-6 fill-none stroke-current" strokeWidth="1.8"><path d="M4 6.5h16v11H4z" /><path d="m4.5 7 7.5 6 7.5-6" /></svg></div><div><p className="mb-1 text-xs font-bold uppercase tracking-widest text-muted">Email</p><a href="mailto:contact@mhrinku.com" className="text-lg font-bold text-white transition-colors hover:text-primary">contact@mhrinku.com</a></div></div><div className="flex items-center gap-6"><div className="flex size-14 items-center justify-center rounded-xl border border-white/5 bg-surface text-primary"><svg viewBox="0 0 24 24" aria-hidden="true" className="size-6 fill-none stroke-current" strokeWidth="1.8"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" /><circle cx="12" cy="10" r="2.5" /></svg></div><div><p className="mb-1 text-xs font-bold uppercase tracking-widest text-muted">Location</p><p className="text-lg font-bold text-white">Dhaka, Bangladesh</p></div></div></div></div><div className="rounded-2xl border border-white/5 bg-surface p-10 shadow-2xl"><ContactForm /></div></div></div></section>
       </main>

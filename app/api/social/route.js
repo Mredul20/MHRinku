@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePublicPages } from "@/lib/publicCache";
 import { requireAdmin } from "@/lib/adminAuth";
 import { supabaseAdmin } from "@/lib/supabase";
 
@@ -32,5 +33,6 @@ export async function POST(req) {
     .upsert(rows, { onConflict: "platform" });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  revalidatePublicPages();
   return NextResponse.json({ success: true });
 }

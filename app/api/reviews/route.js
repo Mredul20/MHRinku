@@ -1,6 +1,7 @@
 import { requireAdmin } from "@/lib/adminAuth";
 import { supabaseAdmin } from "@/lib/supabase";
 import { NextResponse } from "next/server";
+import { revalidatePublicPages } from "@/lib/publicCache";
 
 function cleanReview(body = {}) {
   const ratingIsEmpty = body.rating == null || (typeof body.rating === "string" && body.rating.trim() === "");
@@ -60,6 +61,7 @@ export async function POST(req) {
 
   const { data, error } = await supabaseAdmin.from("reviews").insert([fields]).select().single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  revalidatePublicPages();
   return NextResponse.json(data);
 }
 
@@ -83,6 +85,7 @@ export async function PUT(req) {
     .single();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  revalidatePublicPages();
   return NextResponse.json(data);
 }
 
@@ -102,6 +105,7 @@ export async function DELETE(req) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
+  revalidatePublicPages();
   return NextResponse.json({ success: true });
 }
 
@@ -113,5 +117,6 @@ export async function PATCH(req) {
   if (!id) return NextResponse.json({ error: "ID is required" }, { status: 400 });
   const { data, error } = await supabaseAdmin.from("reviews").update({ published }).eq("id", id).select();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  revalidatePublicPages();
   return NextResponse.json(data[0]);
 }

@@ -8,12 +8,6 @@ const nextConfig = {
           { key: 'Cache-Control', value: 'no-store, max-age=0' },
         ],
       },
-      {
-        source: '/',
-        headers: [
-          { key: 'Cache-Control', value: 'no-store, max-age=0' },
-        ],
-      },
     ];
   },
   async rewrites() {

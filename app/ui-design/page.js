@@ -6,8 +6,6 @@ export async function generateMetadata() {
   return toMetadata(await getPageMeta("ui-design"), "/ui-design");
 }
 
-export const dynamic = "force-dynamic";
-
 export default function UiDesignPage() {
   return <ServicePage config={servicePageConfigs["ui-design"]} pathname="/ui-design" />;
 }

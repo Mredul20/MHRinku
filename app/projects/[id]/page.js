@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { notFound } from "next/navigation";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -6,7 +7,7 @@ import { getCanonicalUrl } from "@/lib/pageMeta";
 import { supabaseAdmin } from "@/lib/supabase";
 import { normalizeImageRef, normalizeImageRefs } from "@/lib/validators";
 
-async function getProject(idOrSlug) {
+const getProject = cache(async (idOrSlug) => {
   try {
     const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(idOrSlug);
     let query = supabaseAdmin.from("projects").select("*").limit(1);
@@ -24,6 +25,10 @@ async function getProject(idOrSlug) {
   } catch {
     return null;
   }
+});
+
+export async function generateStaticParams() {
+  return [];
 }
 
 function getImages(project) {

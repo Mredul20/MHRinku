@@ -5,11 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const serviceLinks = [
-  { href: "/graphic-design-services-bangladesh", glyph: "✦", label: "Graphic Design" },
-  { href: "/ui-design", glyph: "▣", label: "UI/UX Design" },
-  { href: "/ads-expert-bangladesh", glyph: "◉", label: "Ads Expert" },
   { href: "/web-design-services-bangladesh", glyph: "⌘", label: "Web Design" },
-  { href: "/seo", glyph: "⌁", label: "SEO Service" },
+  { href: "/graphic-design-services-bangladesh", glyph: "✦", label: "Graphic Design" },
+  { href: "/ads-expert-bangladesh", glyph: "◉", label: "Ads Expert" },
 ];
 
 export default function Navbar() {

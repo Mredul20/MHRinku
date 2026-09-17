@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { getCanonicalUrl } from "@/lib/pageMeta";
 import { supabaseAdmin } from "@/lib/supabase";
 import Footer from "../../components/Footer";
@@ -7,7 +8,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 /* ── fetch member on server ── */
-async function getMember(id) {
+const getMember = cache(async (id) => {
   const { data, error } = await supabaseAdmin
     .from("team_members")
     .select("*")
@@ -16,6 +17,10 @@ async function getMember(id) {
     .single();
   if (error || !data) return null;
   return data;
+});
+
+export async function generateStaticParams() {
+  return [];
 }
 
 /* ── metadata ── */

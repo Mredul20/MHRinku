@@ -2,6 +2,7 @@ import { requireAdmin } from "@/lib/adminAuth";
 import { supabaseAdmin } from "@/lib/supabase";
 import { slugify } from "@/lib/validators";
 import { NextResponse } from "next/server";
+import { revalidatePublicPages } from "@/lib/publicCache";
 
 const TABLE = "page_meta";
 
@@ -46,6 +47,7 @@ export async function PUT(request) {
       .select()
       .single();
     if (error) throw error;
+    revalidatePublicPages();
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });

@@ -6,8 +6,6 @@ export async function generateMetadata() {
   return toMetadata(await getPageMeta("wordpress-web-design-bangladesh"), "/wordpress-web-design-bangladesh");
 }
 
-export const dynamic = "force-dynamic";
-
 export default function WordPressWebDesignBangladeshPage() {
   return <ServicePage config={servicePageConfigs["wordpress-web-design-bangladesh"]} pathname="/wordpress-web-design-bangladesh" />;
 }

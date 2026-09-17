@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePublicPages } from "@/lib/publicCache";
 import { requireAdmin } from "@/lib/adminAuth";
 import { supabaseAdmin } from "@/lib/supabase";
 
@@ -61,6 +62,7 @@ export async function PATCH(req) {
       .eq("id", id);
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    revalidatePublicPages();
     return NextResponse.json({ success: true });
   } catch (e) {
     return NextResponse.json({ error: e.message }, { status: 500 });
@@ -81,6 +83,7 @@ export async function DELETE(req) {
 
     const { error } = await supabaseAdmin.from(table).delete().eq("id", id);
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    revalidatePublicPages();
     return NextResponse.json({ success: true });
   } catch (e) {
     return NextResponse.json({ error: e.message }, { status: 500 });

@@ -718,58 +718,6 @@ function initAutoCarousel(track, interval) {
 })();
 </script>
 
-<!-- Our Team Section -->
-<section class="py-14 bg-background-dark" id="team">
-<div class="max-w-7xl mx-auto px-6">
-<div class="mb-10 text-center">
-<h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Our Team</h2>
-<h3 class="text-4xl md:text-5xl font-black text-white">People Behind the Work</h3>
-</div>
-<div id="team-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-  <div class="text-muted text-center py-10 col-span-full">Loading team...</div>
-</div>
-</div>
-</section>
-<script>
-(async function() {
-  try {
-    const res = await fetch('/api/team');
-    const members = await res.json();
-    const grid = document.getElementById('team-grid');
-    if (!Array.isArray(members) || members.length === 0) {
-      grid.innerHTML = '<p class="text-muted text-center col-span-full py-10">No team members yet.</p>';
-      return;
-    }
-    grid.innerHTML = members.map(member => {
-      const photoUrl = member.photo_url && !window.isBlockedAssetUrl?.(member.photo_url) ? member.photo_url : '';
-      return `
-      <a href="/team/${member.id}" class="bg-surface border border-white/5 rounded-2xl overflow-hidden group hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 block no-underline">
-        <div class="aspect-[4/5] bg-primary/5 overflow-hidden relative">
-          ${photoUrl
-            ? `<img src="${photoUrl}" alt="${member.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>`
-            : `<div class="w-full h-full flex items-center justify-center text-primary text-6xl font-black">${member.name?.charAt(0) || '?'}</div>`
-          }
-          <div class="absolute inset-0 bg-background-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span class="flex items-center gap-2 text-white font-bold text-sm bg-primary px-5 py-2.5 rounded-xl">
-              <span class="material-symbols-outlined text-base">person</span>
-              View Profile
-            </span>
-          </div>
-        </div>
-        <div class="p-6">
-          <p class="text-primary text-xs font-bold uppercase tracking-widest mb-2">${member.role || ''}</p>
-          <h4 class="text-xl font-black text-white mb-3 group-hover:text-primary transition-colors">${member.name}</h4>
-          <p class="text-muted text-sm leading-relaxed line-clamp-2">${member.bio || ''}</p>
-        </div>
-      </a>
-    `;
-    }).join('');
-  } catch(e) {
-    document.getElementById('team-grid').innerHTML = '<p class="text-muted text-center col-span-full">Could not load team.</p>';
-  }
-})();
-</script>
-
 <!-- Beyond the Screen -->
 <section class="py-14">
   <div class="max-w-7xl mx-auto px-6">

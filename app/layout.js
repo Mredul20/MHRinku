@@ -9,7 +9,7 @@ import { AuthProvider } from "./Providers";
 const inter = Inter({ subsets: ["latin"], variable: "--font-display" });
 const whatsappUrl = "https://wa.me/8801786029947";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export async function generateMetadata() {
   const { searchConsoleVerification } = await getSeoIntegrations();

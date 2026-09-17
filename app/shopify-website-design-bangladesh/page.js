@@ -6,8 +6,6 @@ export async function generateMetadata() {
   return toMetadata(await getPageMeta("shopify-website-design-bangladesh"), "/shopify-website-design-bangladesh");
 }
 
-export const dynamic = "force-dynamic";
-
 export default function ShopifyWebsiteDesignBangladeshPage() {
   return <ServicePage config={servicePageConfigs["shopify-website-design-bangladesh"]} pathname="/shopify-website-design-bangladesh" />;
 }
