@@ -119,6 +119,9 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title,
       description,
+      siteName: "MHRinku",
+      type: "website",
+      url: getCanonicalUrl(`/projects/${project.slug || id}`),
       images: heroImage.url ? [heroImage.url] : [],
     },
   };

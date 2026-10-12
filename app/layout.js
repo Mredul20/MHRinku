@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import Script from "next/script";
-import { getSeoIntegrations } from "@/lib/pageMeta";
+import { getSeoIntegrations, getSiteUrl } from "@/lib/pageMeta";
 import { getPersonSchema, getLocalBusinessSchema } from "@/lib/schema";
 import JsonLdScript from "./components/JsonLdScript";
 import "./globals.css";
@@ -15,6 +15,7 @@ export async function generateMetadata() {
   const { searchConsoleVerification } = await getSeoIntegrations();
 
   return {
+    metadataBase: new URL(getSiteUrl()),
     title: "Mobarak Hossain Rinku | Portfolio",
     description: "Results-driven design and marketing that scales your business.",
     icons: {

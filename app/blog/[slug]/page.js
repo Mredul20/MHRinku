@@ -56,6 +56,9 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: blog.metaTitle || blog.title,
       description: blog.metaDescription || "",
+      siteName: "MHRinku",
+      type: "article",
+      url: getCanonicalUrl(`/blog/${slug}`),
       images: blog.featuredImage ? [blog.featuredImage] : [],
     },
   };
