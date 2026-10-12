@@ -13,9 +13,7 @@ const PAGES = [
   { label: "Web Design Hub", slug: "web-design-services-bangladesh", path: "/web-design-services-bangladesh" },
   { label: "WordPress Web Design", slug: "wordpress-web-design-bangladesh", path: "/wordpress-web-design-bangladesh" },
   { label: "Shopify Development", slug: "shopify-website-design-bangladesh", path: "/shopify-website-design-bangladesh" },
-  { label: "SEO", slug: "seo", path: "/seo" },
   { label: "Blog Static Landing", slug: "blog", path: "/blog.html" },
-  { label: "SEO Static Landing", slug: "seo-static", path: "/seo.html" },
 ];
 
 const EMPTY_META = { meta_title: "", meta_description: "", og_image: "" };
