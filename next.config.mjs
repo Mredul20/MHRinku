@@ -24,6 +24,7 @@ const nextConfig = {
       { source: '/graphic-design.html', destination: '/graphic-design-services-bangladesh', permanent: true },
       { source: '/wordpress-dev.html', destination: '/wordpress-web-design-bangladesh', permanent: true },
       { source: '/seo.html', destination: '/web-design-services-bangladesh', permanent: true },
+      { source: '/case-studies', destination: '/', permanent: true },
       { source: '/ui-design.html', destination: '/web-design-services-bangladesh', permanent: true },
     ];
   },

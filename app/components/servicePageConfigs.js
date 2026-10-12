@@ -64,9 +64,6 @@ export const servicePageConfigs = {
       { href: "/web-design-services-bangladesh", title: "Web Design Services Bangladesh", description: "Landing pages and websites built to support paid campaigns and conversions." },
       { href: "/graphic-design-services-bangladesh", title: "Graphic Design Services Bangladesh", description: "Ad creatives, banners, and social media graphics for campaigns." },
     ],
-    caseStudies: [
-      { href: "/case-studies#meta-ads-local-brand-bangladesh", title: "Meta Ads Campaign for a Local Bangladesh Brand", result: "4.2x return on ad spend" },
-    ],
     overviewTitle: "Paid Campaigns Built For Measurable Growth",
     overview: "Running ads is not only boosting posts. I plan paid campaigns for businesses in Dhaka and across Bangladesh with the right offer, audience, creative, funnel stage, tracking, and optimization rhythm.",
     portfolioTitle: "Advertising Proof & Results",
@@ -123,9 +120,6 @@ export const servicePageConfigs = {
       { href: "/web-design-services-bangladesh", title: "Web Design Services Bangladesh", description: "Compare WordPress vs Shopify and choose the right platform." },
       { href: "/shopify-website-design-bangladesh", title: "Shopify Website Design Bangladesh", description: "E-commerce store design for product businesses in Bangladesh." },
     ],
-    caseStudies: [
-      { href: "/case-studies#wordpress-service-business-dhaka", title: "WordPress Website for a Dhaka Service Business", result: "+65% organic contact requests" },
-    ],
     overviewTitle: "Editable WordPress Websites Built For Business",
     overview: "I build WordPress websites that balance clean design, speed, SEO structure, and easy content editing for businesses in Dhaka and across Bangladesh.",
     portfolioTitle: "Featured WordPress Web Design Projects",
@@ -172,9 +166,6 @@ export const servicePageConfigs = {
       { href: "/web-design-services-bangladesh", title: "Web Design Services Bangladesh", description: "Compare Shopify vs WordPress and pick the right platform." },
       { href: "/wordpress-web-design-bangladesh", title: "WordPress Web Design Bangladesh", description: "Editable business websites and blogs for service-based companies." },
       { href: "/ads-expert-bangladesh", title: "Ads Expert Bangladesh", description: "Campaign setup and creative testing to drive traffic to your store." },
-    ],
-    caseStudies: [
-      { href: "/case-studies#shopify-store-bangladesh-retail", title: "Shopify Store Redesign for a Bangladesh Retailer", result: "42% higher mobile conversion" },
     ],
     overviewTitle: "E-commerce Stores Built Around Buying Flow",
     overview: "Shopify fits product businesses that need clean product pages, inventory structure, checkout flow, and campaign-ready storefronts.",

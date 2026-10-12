@@ -237,27 +237,6 @@ export default function WebDesignServicesBangladeshPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-12 text-center">
-            <p className="mb-3 text-sm font-black uppercase tracking-[0.3em] text-primary">Proof of Work</p>
-            <h2 className="text-4xl font-black tracking-tight text-white md:text-[56px]">Web design results in Bangladesh.</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-400">Measured outcomes from WordPress, Shopify, and Meta Ads projects for Dhaka and Bangladesh clients.</p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              { href: "/case-studies#shopify-store-bangladesh-retail", title: "Shopify Store Redesign", result: "42% higher mobile conversion" },
-              { href: "/case-studies#wordpress-service-business-dhaka", title: "WordPress Service Business", result: "+65% organic contact requests" },
-              { href: "/case-studies#meta-ads-local-brand-bangladesh", title: "Meta Ads Local Brand", result: "4.2x return on ad spend" },
-            ].map((study) => (
-              <Link key={study.href} href={study.href} className="group flex flex-col rounded-2xl border border-white/10 bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:no-underline">
-                <h3 className="text-xl font-black text-white transition-colors group-hover:text-primary">{study.title}</h3>
-                <p className="mt-3 text-sm font-black uppercase tracking-widest text-primary">{study.result}</p>
-                <span className="mt-6 inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-primary">Read case study <span className="material-symbols-outlined text-base">arrow_forward</span></span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
         <section className="mx-auto max-w-7xl px-6 py-20" id="start">
           <div className="relative overflow-hidden rounded-[2rem] bg-[#C6A75E] p-10 text-background-dark shadow-[0_30px_90px_rgba(198,167,94,0.18)] md:p-14">
             <div className="absolute -right-16 -top-16 size-56 rounded-full bg-white/20 blur-3xl" />

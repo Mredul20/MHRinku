@@ -66,12 +66,6 @@ const services = [
   { href: "/ads-expert-bangladesh", icon: "ads_click", title: "Ads Management", text: "Meta Ads, Google Ads, and TikTok Ads campaigns with clear structure, creative testing, retargeting, and ongoing optimization." },
 ];
 
-const results = [
-  { href: "/case-studies#meta-ads-local-brand-bangladesh", title: "Meta Ads Campaign for a Local Bangladesh Brand", result: "4.2x return on ad spend" },
-  { href: "/case-studies#wordpress-service-business-dhaka", title: "WordPress Website for a Dhaka Service Business", result: "+65% organic contact requests" },
-  { href: "/case-studies#shopify-store-bangladesh-retail", title: "Shopify Store Redesign for a Bangladesh Retailer", result: "42% higher mobile conversion" },
-];
-
 const tools = ["Adobe Photoshop", "Adobe Illustrator", "Figma", "WordPress", "WooCommerce", "Shopify", "Meta Ads Manager", "Google Ads", "TikTok Ads"];
 
 const process = [
@@ -256,25 +250,6 @@ export default async function AboutPage() {
                   <span className="mt-6 inline-flex items-center gap-1 text-sm font-bold uppercase tracking-widest text-primary">Learn more <span className="material-symbols-outlined text-base">arrow_forward</span></span>
                 </Link>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20">
-          <div className="mx-auto max-w-7xl px-6">
-            <SectionHeading eyebrow="Proven Results" title="Work That Delivered" description="A few outcomes from recent client projects." />
-            <div className="grid gap-6 md:grid-cols-3">
-              {results.map((item) => (
-                <Link key={item.href} href={item.href} className="rounded-2xl border border-white/5 bg-surface p-8 transition-colors hover:border-primary/30">
-                  <p className="text-3xl font-black text-primary">{item.result}</p>
-                  <h3 className="mt-3 text-lg font-bold text-white">{item.title}</h3>
-                </Link>
-              ))}
-            </div>
-            <div className="mt-10 text-center">
-              <Link href="/case-studies" className="inline-flex items-center gap-2 rounded-xl border border-slate-700 px-7 py-4 font-bold text-white transition-colors hover:border-primary">
-                Read the case studies <span className="material-symbols-outlined">arrow_outward</span>
-              </Link>
             </div>
           </div>
         </section>
