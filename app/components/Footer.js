@@ -42,9 +42,8 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-          <p>© 2024 Mobarak Hossain Rinku. All rights reserved.</p>
-          <p>Designed with passion and precision.</p>
+        <div className="pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-sm text-slate-500">
+          <p>© 2026 Mobarak Hossain Rinku. All rights reserved.</p>
         </div>
       </div>
     </footer>
