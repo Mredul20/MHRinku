@@ -179,29 +179,6 @@ function RelatedServicesSection({ services }) {
   );
 }
 
-function CaseStudiesSection({ studies }) {
-  if (!studies?.length) return null;
-
-  return (
-    <section className="bg-slate-900/50 py-20">
-      <div className="mx-auto max-w-7xl px-6">
-        <SectionLabel eyebrow="Proof of Work" title="Related Case Studies" description="Measured results for projects like yours in Bangladesh." />
-        <div className="grid gap-6 md:grid-cols-3">
-          {studies.map((study) => (
-            <Link key={study.href} href={study.href} className="group flex flex-col rounded-2xl border border-white/5 bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:no-underline">
-              <h3 className="text-xl font-bold text-white transition-colors group-hover:text-primary">{study.title}</h3>
-              <p className="mt-3 text-sm font-black uppercase tracking-widest text-primary">{study.result}</p>
-              <span className="mt-6 inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-primary">
-                Read case study <span className="material-symbols-outlined text-base">arrow_forward</span>
-              </span>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function CertificatesSection({ certificates }) {
   if (!certificates?.length) return null;
 
@@ -405,7 +382,6 @@ export default async function ServicePage({ config, pathname }) {
         </section>
 
         <RelatedServicesSection services={config.relatedServices} />
-        <CaseStudiesSection studies={config.caseStudies} />
 
         <section className="mx-auto max-w-7xl px-6 pb-20">
           <div className="overflow-hidden rounded-3xl bg-[#C6A75E] p-10 text-background-dark md:p-14">
