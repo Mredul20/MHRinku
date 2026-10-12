@@ -12,7 +12,6 @@ export const servicePageConfigs = {
     heroImage: "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=1200&q=80",
     relatedServices: [
       { href: "/web-design-services-bangladesh", title: "Web Design Services Bangladesh", description: "Custom, editable WordPress and Shopify websites built for businesses in Bangladesh." },
-      { href: "/ui-design", title: "UI/UX Design Services Bangladesh", description: "Clean interfaces and responsive layouts for websites and digital products." },
       { href: "/ads-expert-bangladesh", title: "Ads Expert Bangladesh", description: "Paid campaigns on Meta, Google, and TikTok with strong creative direction." },
     ],
     overviewTitle: "Design Work Built For Brand Clarity",
@@ -48,46 +47,6 @@ export const servicePageConfigs = {
       { q: "What graphic design work can you create?", a: "I can design logos, brand identity assets, social media posts, ad creatives, flyers, brochures, banners, and marketing graphics." },
       { q: "Can you design social media and ad creatives?", a: "Yes. I create static posts, carousel designs, campaign graphics, and Meta Ads creatives with clear messaging and brand consistency." },
       { q: "Will I receive editable design files?", a: "You receive export-ready files, and editable source files can be included depending on the project scope." },
-    ],
-  },
-  "ui-design": {
-    service: "ui-design",
-    imageSettingKey: "ui_design_image",
-    eyebrow: "UI/UX Design Services",
-    title: <>UI/UX Design Services <span className="text-primary">Bangladesh.</span></>,
-    schemaTitle: "UI/UX Design Services Bangladesh",
-    description: "UI/UX design services in Bangladesh for clean interfaces and conversion-focused user journeys on websites, landing pages, dashboards, and digital products.",
-    icon: "layers",
-    heroImage: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&q=80",
-    relatedServices: [
-      { href: "/web-design-services-bangladesh", title: "Web Design Services Bangladesh", description: "WordPress and Shopify website design built for speed and easy editing." },
-      { href: "/graphic-design-services-bangladesh", title: "Graphic Design Services Bangladesh", description: "Logos, brand identity, and marketing creatives for Bangladesh businesses." },
-    ],
-    overviewTitle: "Interfaces That Feel Clear And Useful",
-    overview: "Good UI removes friction. I focus on hierarchy, responsiveness, accessibility, and user paths that help people take action.",
-    portfolioTitle: "Featured UI/UX Work",
-    features: [
-      { icon: "schema", title: "Wireframes", text: "Structure pages and flows before visual polish to avoid wasted build time." },
-      { icon: "web_asset", title: "High-Fidelity UI", text: "Responsive screens with clear hierarchy, spacing, and brand fit." },
-      { icon: "touch_app", title: "Conversion UX", text: "User journeys and CTAs designed around real business outcomes." },
-    ],
-    tools: [
-      {
-        name: "Figma",
-        logo: "https://cdn.simpleicons.org/figma/C6A75E",
-        text: "Interface design, prototypes, responsive layouts, and developer handoff.",
-      },
-    ],
-    process: [
-      { title: "Research", text: "Clarify users, goals, competitors, and conversion actions." },
-      { title: "Structure", text: "Map screens, sections, and user paths." },
-      { title: "Design", text: "Create polished responsive interface layouts." },
-      { title: "Handoff", text: "Prepare assets and notes for development." },
-    ],
-    faq: [
-      { q: "Do you design mobile screens?", a: "Yes. Responsive layout is included in the design process." },
-      { q: "Can you redesign an existing page?", a: "Yes. I can improve layout, hierarchy, CTA placement, and visual polish." },
-      { q: "Do you provide developer handoff?", a: "Yes. Designs can include layout specs, assets, and implementation notes." },
     ],
   },
   "ads-expert-bangladesh": {
