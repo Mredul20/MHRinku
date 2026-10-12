@@ -21,7 +21,6 @@ const services = [
   { label: "UI/UX Design",   value: "ui-design",      icon: "layers" },
   { label: "Ads Expert", value: "meta-ads", icon: "ads_click" },
   { label: "WordPress Web Design", value: "wordpress-dev", icon: "language" },
-  { label: "SEO",            value: "seo",             icon: "query_stats" },
 ];
 
 const EMPTY_FORM = {

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { normalizeImage } from "@/lib/validators";
 import SmartImage from "./SmartImage";
 
-const fallbackFilters = ["All", "Design", "WordPress", "Ads", "SEO"];
+const fallbackFilters = ["All", "Design", "WordPress", "Ads"];
 
 const getImage = (project) => normalizeImage(
   project.thumbnail
@@ -26,7 +26,6 @@ export default function ProjectGrid({ initialProjects }) {
     if (filter === "Design") return p.category.includes("Design");
     if (filter === "WordPress") return p.category.includes("WordPress") || p.category.includes("Web Design") || p.category.includes("Web Development") || p.category.includes("CMS");
     if (filter === "Ads") return p.category.includes("Ads");
-    if (filter === "SEO") return Array.isArray(p.service) && p.service.includes("seo");
     return false;
   });
 

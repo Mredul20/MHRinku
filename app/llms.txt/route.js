@@ -13,7 +13,6 @@ Mobarak Hossain Rinku is a freelance web designer, WordPress developer, and digi
 - Graphic design services Bangladesh — logos, brand identity, social media creatives, ad visuals.
 - UI/UX design services Bangladesh — wireframes, high-fidelity interfaces, and conversion-focused user flows.
 - Ads expert Bangladesh — Meta Ads, Google Ads, TikTok Ads campaign setup and optimization.
-- SEO service Bangladesh — technical SEO, on-page optimization, and content structure.
 
 ## Location and contact
 - Name: Mobarak Hossain Rinku
