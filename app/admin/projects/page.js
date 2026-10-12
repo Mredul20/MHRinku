@@ -18,7 +18,6 @@ const categories = [
 
 const services = [
   { label: "Graphic Design", value: "graphic-design", icon: "brush" },
-  { label: "UI/UX Design",   value: "ui-design",      icon: "layers" },
   { label: "Ads Expert", value: "meta-ads", icon: "ads_click" },
   { label: "WordPress Web Design", value: "wordpress-dev", icon: "language" },
 ];

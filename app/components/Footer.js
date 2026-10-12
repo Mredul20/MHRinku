@@ -112,7 +112,6 @@ export default async function Footer() {
           <div>
             <h5 className="font-bold mb-6">Services</h5>
             <ul className="space-y-4 text-slate-400">
-              <li><Link className="hover:text-primary transition-colors" href="/ui-design">UI/UX Design</Link></li>
               <li><Link className="hover:text-primary transition-colors" href="/graphic-design-services-bangladesh">Graphic Design</Link></li>
               <li><Link className="hover:text-primary transition-colors" href="/ads-expert-bangladesh">Ads Expert</Link></li>
               <li><Link className="hover:text-primary transition-colors" href="/web-design-services-bangladesh">Web Design</Link></li>

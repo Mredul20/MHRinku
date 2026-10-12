@@ -8,7 +8,6 @@ const PAGES = [
   { label: "Homepage", slug: "index", path: "/" },
   { label: "About Page", slug: "about", path: "/about" },
   { label: "Graphic Design", slug: "graphic-design-services-bangladesh", path: "/graphic-design-services-bangladesh" },
-  { label: "UI/UX Design", slug: "ui-design", path: "/ui-design" },
   { label: "Ads Expert", slug: "ads-expert-bangladesh", path: "/ads-expert-bangladesh" },
   { label: "Web Design Hub", slug: "web-design-services-bangladesh", path: "/web-design-services-bangladesh" },
   { label: "WordPress Web Design", slug: "wordpress-web-design-bangladesh", path: "/wordpress-web-design-bangladesh" },
