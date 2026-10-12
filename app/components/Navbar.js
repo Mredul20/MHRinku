@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 const serviceLinks = [
-  { href: "/graphic-design", glyph: "✦", label: "Graphic Design" },
-  { href: "/ui-design", glyph: "▣", label: "UI/UX Design" },
-  { href: "/meta-ads", glyph: "◉", label: "Meta Ads" },
-  { href: "/wordpress-dev", glyph: "⌘", label: "CMS Dev" },
-  { href: "/seo", glyph: "⌁", label: "SEO Service" },
+  { href: "/web-design-services-bangladesh", glyph: "⌘", label: "Web Design" },
+  { href: "/graphic-design-services-bangladesh", glyph: "✦", label: "Graphic Design" },
+  { href: "/ads-expert-bangladesh", glyph: "◉", label: "Ads Expert" },
 ];
 
 export default function Navbar() {
@@ -17,12 +16,21 @@ export default function Navbar() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-            <div className="size-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-background-dark font-black text-xl">M</span>
-            </div>
-            <h2 className="text-xl font-extrabold tracking-tight dark:text-white">MHR</h2>
+        <div className="relative max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            className="md:hidden flex flex-col gap-1.5 p-2"
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+          >
+            <span className="w-6 h-0.5 bg-white transition-all" style={menuOpen ? { transform: "rotate(45deg) translate(4px, 4px)" } : {}} />
+            <span className="w-6 h-0.5 bg-white transition-all" style={menuOpen ? { opacity: 0 } : {}} />
+            <span className="w-6 h-0.5 bg-white transition-all" style={menuOpen ? { transform: "rotate(-45deg) translate(4px, -4px)" } : {}} />
+          </button>
+
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center group cursor-pointer md:static md:translate-x-0">
+            <Image src="/mhr-logo.png" alt="MHR logo" width={126} height={50} priority className="h-8 w-auto transition-transform duration-300 group-hover:scale-105" />
           </Link>
 
           <div className="hidden md:flex items-center gap-10">
@@ -49,22 +57,9 @@ export default function Navbar() {
             <Link className="text-sm font-medium hover:text-primary transition-colors" href="/#contact">Contact</Link>
           </div>
 
-          <div className="flex items-center gap-4">
-            <Link href="/#contact" className="hidden sm:block bg-primary hover:bg-primary/90 text-background-dark font-bold py-2.5 px-6 rounded-lg text-sm transition-all shadow-lg shadow-primary/20">
-              Hire Me
-            </Link>
-            <button
-              type="button"
-              onClick={() => setMenuOpen((open) => !open)}
-              className="md:hidden flex flex-col gap-1.5 p-2"
-              aria-label="Toggle navigation menu"
-              aria-expanded={menuOpen}
-            >
-              <span className="w-6 h-0.5 bg-white transition-all" style={menuOpen ? { transform: "rotate(45deg) translate(4px, 4px)" } : {}} />
-              <span className="w-6 h-0.5 bg-white transition-all" style={menuOpen ? { opacity: 0 } : {}} />
-              <span className="w-6 h-0.5 bg-white transition-all" style={menuOpen ? { transform: "rotate(-45deg) translate(4px, -4px)" } : {}} />
-            </button>
-          </div>
+          <Link href="/#contact" className="bg-primary hover:bg-primary/90 text-background-dark font-bold py-2 px-3 rounded-lg text-xs transition-all shadow-lg shadow-primary/20 sm:px-4 sm:text-sm md:py-2.5 md:px-6">
+            Hire Me
+          </Link>
         </div>
       </nav>
 

@@ -1,3 +1,5 @@
+import { cache } from "react";
+import { getCanonicalUrl } from "@/lib/pageMeta";
 import { supabaseAdmin } from "@/lib/supabase";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
@@ -6,7 +8,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 /* ── fetch member on server ── */
-async function getMember(id) {
+const getMember = cache(async (id) => {
   const { data, error } = await supabaseAdmin
     .from("team_members")
     .select("*")
@@ -15,6 +17,10 @@ async function getMember(id) {
     .single();
   if (error || !data) return null;
   return data;
+});
+
+export async function generateStaticParams() {
+  return [];
 }
 
 /* ── metadata ── */
@@ -25,6 +31,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${member.name} — ${member.role} | MHR`,
     description: member.bio?.substring(0, 160),
+    alternates: { canonical: getCanonicalUrl(`/team/${id}`) },
   };
 }
 
@@ -86,7 +93,7 @@ export default async function TeamMemberPage({ params }) {
                 <p className="text-[#C6A75E] font-bold tracking-widest uppercase text-sm mb-3">
                   {member.role}
                 </p>
-                <h1 className="text-5xl md:text-6xl font-black tracking-tighter leading-[0.95] text-white">
+                <h1 className="text-[44px] md:text-[56px] font-black tracking-tighter leading-[0.95] text-white">
                   {member.name}
                   <span className="text-[#C6A75E]">.</span>
                 </h1>

@@ -9,6 +9,7 @@ export default function Login() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const router = useRouter();
@@ -103,14 +104,26 @@ export default function Login() {
           </div>
           <div className="space-y-2">
             <label className="text-sm font-bold text-slate-300 ml-1">Password</label>
-            <input 
-              type="password" 
-              className="w-full bg-slate-900 border-white/10 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary text-white p-4" 
-              placeholder="••••••••" 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required 
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                className="w-full bg-slate-900 border-white/10 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary text-white p-4 pr-12"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 transition-colors hover:text-white"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                <span className="material-symbols-outlined text-xl">
+                  {showPassword ? "visibility_off" : "visibility"}
+                </span>
+              </button>
+            </div>
           </div>
           <button type="submit" className="w-full bg-primary hover:bg-primary/90 text-background-dark font-black py-4 px-8 rounded-xl text-lg transition-all shadow-lg shadow-primary/20">
             {isSignup ? "Create Account" : "Sign In"}

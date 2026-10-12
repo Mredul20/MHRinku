@@ -153,7 +153,7 @@ export default function ProductsAdmin() {
             <div className="p-16 text-center">
               <span className="material-symbols-outlined text-6xl text-muted mb-4 block">extension</span>
               <p className="font-bold text-lg text-white">No products yet</p>
-              <p className="text-muted text-sm mt-1">Add your plugins, themes to showcase on the CMS dev page</p>
+              <p className="text-muted text-sm mt-1">Add your plugins and themes to showcase on the web design page</p>
             </div>
           ) : (
             <div className="divide-y divide-white/5">

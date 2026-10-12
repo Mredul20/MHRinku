@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePublicPages } from "@/lib/publicCache";
 import { requireAdmin } from "@/lib/adminAuth";
 import { supabaseAdmin } from "@/lib/supabase";
 
@@ -142,6 +143,7 @@ export async function POST(req) {
       const { message, status } = blogSaveError(error);
       return NextResponse.json({ error: message }, { status });
     }
+    revalidatePublicPages();
     return NextResponse.json(data, { status: 201 });
   } catch (e) {
     return NextResponse.json({ error: e.message }, { status: 500 });
@@ -171,6 +173,7 @@ export async function PUT(req) {
       const { message, status } = blogSaveError(error);
       return NextResponse.json({ error: message }, { status });
     }
+    revalidatePublicPages();
     return NextResponse.json(data);
   } catch (e) {
     return NextResponse.json({ error: e.message }, { status: 500 });
@@ -198,6 +201,7 @@ export async function DELETE(req) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
+    revalidatePublicPages();
     return NextResponse.json({ success: true });
   } catch (e) {
     return NextResponse.json({ error: e.message }, { status: 500 });

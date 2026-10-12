@@ -77,6 +77,9 @@ export default function AdminDashboard() {
         <Link href="/admin/media" className="bg-surface hover:bg-white/10 border border-white/5 text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center gap-2">
           <span className="material-symbols-outlined text-xl">upload</span> Upload Media
         </Link>
+        <Link href="/admin/services" className="bg-surface hover:bg-white/10 border border-white/5 text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center gap-2">
+          <span className="material-symbols-outlined text-xl">workspace_premium</span> Manage Service Certificates
+        </Link>
       </div>
     </div>
   );

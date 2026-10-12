@@ -1,12 +1,12 @@
-# Graph Report - E:\mobarok-portfolio  (2026-07-22)
+# Graph Report - E:\mobarok-portfolio  (2026-09-17)
 
 ## Corpus Check
-- 73 files · ~223,237 words
+- 101 files · ~260,137 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 173 nodes · 200 edges · 48 communities detected
-- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.8)
+- 286 nodes · 411 edges · 51 communities detected
+- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 50 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -58,76 +58,79 @@
 - [[_COMMUNITY_Community 45|Community 45]]
 - [[_COMMUNITY_Community 46|Community 46]]
 - [[_COMMUNITY_Community 47|Community 47]]
+- [[_COMMUNITY_Community 48|Community 48]]
+- [[_COMMUNITY_Community 49|Community 49]]
+- [[_COMMUNITY_Community 50|Community 50]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `GET()` - 24 edges
-2. `POST()` - 18 edges
-3. `DELETE()` - 13 edges
-4. `PUT()` - 12 edges
-5. `PATCH()` - 9 edges
-6. `createDbClient()` - 7 edges
-7. `generateMetadata()` - 6 edges
-8. `requireAdmin()` - 6 edges
-9. `Home Page (index.html)` - 6 edges
-10. `uploadDirectToStorage()` - 5 edges
+1. `GET()` - 41 edges
+2. `POST()` - 35 edges
+3. `PUT()` - 26 edges
+4. `DELETE()` - 19 edges
+5. `generateMetadata()` - 17 edges
+6. `PATCH()` - 10 edges
+7. `ServicePage()` - 8 edges
+8. `normalizeImageRefs()` - 8 edges
+9. `Home()` - 7 edges
+10. `getCanonicalUrl()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `GET()` --calls--> `getPageHtml()`  [INFERRED]
-  E:\mobarok-portfolio\app\seo\route.js → E:\mobarok-portfolio\lib\pageHtml.js
-- `DELETE()` --calls--> `deleteRowById()`  [INFERRED]
-  E:\mobarok-portfolio\app\api\team\route.js → E:\mobarok-portfolio\mcp\cms-mcp-server.mjs
-- `adminFetch()` --calls--> `uploadDirectToStorage()`  [INFERRED]
-  E:\mobarok-portfolio\lib\adminFetch.js → E:\mobarok-portfolio\lib\uploadClient.js
-- `GET()` --calls--> `requireAdmin()`  [INFERRED]
-  E:\mobarok-portfolio\app\seo\route.js → E:\mobarok-portfolio\lib\adminAuth.js
-- `GET()` --calls--> `isValidPageSlug()`  [INFERRED]
-  E:\mobarok-portfolio\app\seo\route.js → E:\mobarok-portfolio\lib\pageHtml.js
+- `generateMetadata()` --calls--> `getPageMeta()`  [INFERRED]
+  E:\mobarok-portfolio\app\wordpress-web-design-bangladesh\page.js → E:\mobarok-portfolio\lib\pageMeta.js
+- `getYouTubeEmbedUrl()` --calls--> `GET()`  [INFERRED]
+  E:\mobarok-portfolio\app\admin\site-settings\page.js → E:\mobarok-portfolio\app\sitemap.xml\route.js
+- `prepareProjectForm()` --calls--> `normalizeImageRefs()`  [INFERRED]
+  E:\mobarok-portfolio\app\admin\projects\page.js → E:\mobarok-portfolio\lib\validators.js
+- `ProjectManagement()` --calls--> `normalizeImageRefs()`  [INFERRED]
+  E:\mobarok-portfolio\app\admin\projects\page.js → E:\mobarok-portfolio\lib\validators.js
+- `GalleryField()` --calls--> `normalizeImageRefs()`  [INFERRED]
+  E:\mobarok-portfolio\app\admin\projects\page.js → E:\mobarok-portfolio\lib\validators.js
 
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.12
-Nodes (13): requireAdmin(), getPageHtml(), isValidPageSlug(), blogSaveError(), DELETE(), GET(), normalizeBlogPayload(), PATCH() (+5 more)
+Cohesion: 0.08
+Nodes (28): requireAdmin(), getPageHtml(), isValidPageSlug(), revalidatePublicPages(), blogSaveError(), checkRateLimit(), cleanCertificate(), cleanMeta() (+20 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.19
-Nodes (11): blogSlugExists(), createDbClient(), deleteRowById(), fetchSingleRow(), insertSingleRow(), loadEnvFile(), parseEnvLine(), slugify() (+3 more)
+Cohesion: 0.06
+Nodes (20): RootLayout(), CaseStudiesPage(), generateMetadata(), generateStaticParams(), WebDesignServicesBangladeshPage(), getCanonicalUrl(), getPageMeta(), getSiteUrl() (+12 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.33
-Nodes (7): BlogPostPage(), generateMetadata(), getBlog(), getMember(), getProject(), ProjectCaseStudyPage(), TeamMemberPage()
+Cohesion: 0.15
+Nodes (13): ContentBlock(), GalleryField(), getImages(), ProjectCaseStudyPage(), ProjectManagement(), getProjectImages(), isMissingText(), normalizeImageRefs() (+5 more)
 
 ### Community 3 - "Community 3"
+Cohesion: 0.18
+Nodes (12): blogSlugExists(), createDbClient(), deleteRowById(), fetchSingleRow(), insertSingleRow(), loadEnvFile(), parseEnvLine(), slugify() (+4 more)
+
+### Community 4 - "Community 4"
+Cohesion: 0.18
+Nodes (5): AboutPage(), getAboutSettings(), getYouTubeEmbedUrl(), SiteSettingsPage(), Toast()
+
+### Community 5 - "Community 5"
+Cohesion: 0.21
+Nodes (9): getImage(), ProjectCard(), SmartImage(), cleanReachableImageSrc(), cleanReachableSocialUrl(), cleanSocialUrl(), isReachableHttpUrl(), localPublicImageExists() (+1 more)
+
+### Community 6 - "Community 6"
+Cohesion: 0.24
+Nodes (6): getCertificates(), getCmsService(), getProjects(), getSetting(), mergeServiceConfig(), ServicePage()
+
+### Community 7 - "Community 7"
 Cohesion: 0.33
 Nodes (8): adminFetch(), getFileTooLargeMessage(), getMaxUploadBytes(), getMaxUploadMb(), getStorageBucket(), getUploadErrorMessage(), parseJsonSafe(), uploadDirectToStorage()
 
-### Community 4 - "Community 4"
-Cohesion: 0.25
-Nodes (1): Toast()
+### Community 8 - "Community 8"
+Cohesion: 0.46
+Nodes (7): getProjects(), getReviews(), getServices(), getSettings(), getSkills(), getStats(), Home()
 
-### Community 5 - "Community 5"
+### Community 9 - "Community 9"
 Cohesion: 0.29
 Nodes (7): About Page, Blog Page, Graphic Design Service, Home Page (index.html), Meta Ads Management, UI/UX Design Service, WordPress CMS Development
 
-### Community 6 - "Community 6"
-Cohesion: 0.47
-Nodes (3): getProjects(), getSetting(), ServicePage()
-
-### Community 7 - "Community 7"
-Cohesion: 0.83
-Nodes (3): getProjects(), getSettings(), Home()
-
-### Community 8 - "Community 8"
-Cohesion: 1.0
-Nodes (2): AboutPage(), getAboutImage()
-
-### Community 9 - "Community 9"
+### Community 10 - "Community 10"
 Cohesion: 0.67
 Nodes (0): 
-
-### Community 10 - "Community 10"
-Cohesion: 1.0
-Nodes (2): BlogPage(), getBlogs()
 
 ### Community 11 - "Community 11"
 Cohesion: 0.67
@@ -135,18 +138,18 @@ Nodes (0):
 
 ### Community 12 - "Community 12"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (2): BlogPage(), getBlogs()
 
 ### Community 13 - "Community 13"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (2): Footer(), getSocialLinks()
 
 ### Community 14 - "Community 14"
-Cohesion: 1.0
+Cohesion: 0.67
 Nodes (0): 
 
 ### Community 15 - "Community 15"
-Cohesion: 1.0
+Cohesion: 0.67
 Nodes (0): 
 
 ### Community 16 - "Community 16"
@@ -277,96 +280,106 @@ Nodes (0):
 Cohesion: 1.0
 Nodes (0): 
 
+### Community 48 - "Community 48"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 49 - "Community 49"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 50 - "Community 50"
+Cohesion: 1.0
+Nodes (0): 
+
 ## Knowledge Gaps
 - **6 isolated node(s):** `About Page`, `Graphic Design Service`, `UI/UX Design Service`, `Meta Ads Management`, `WordPress CMS Development` (+1 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 12`** (2 nodes): `layout.js`, `RootLayout()`
+- **Thin community `Community 16`** (2 nodes): `loading.js`, `Loading()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 13`** (2 nodes): `Providers.js`, `AuthProvider()`
+- **Thin community `Community 17`** (2 nodes): `Providers.js`, `AuthProvider()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 14`** (2 nodes): `page.js`, `AdminDashboard()`
+- **Thin community `Community 18`** (2 nodes): `page.js`, `AdminDashboard()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 15`** (2 nodes): `page.js`, `BlogManagement()`
+- **Thin community `Community 19`** (2 nodes): `page.js`, `BlogManagement()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 16`** (2 nodes): `page.js`, `ContactsAdmin()`
+- **Thin community `Community 20`** (2 nodes): `page.js`, `ContactsAdmin()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 17`** (2 nodes): `page.js`, `PagesAdmin()`
+- **Thin community `Community 21`** (2 nodes): `page.js`, `PagesAdmin()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 18`** (2 nodes): `page.js`, `ProductsAdmin()`
+- **Thin community `Community 22`** (2 nodes): `page.js`, `ProductsAdmin()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 19`** (2 nodes): `page.js`, `ProjectManagement()`
+- **Thin community `Community 23`** (2 nodes): `page.js`, `SiteStatsAdmin()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 20`** (2 nodes): `page.js`, `ReviewsAdmin()`
+- **Thin community `Community 24`** (2 nodes): `page.js`, `SkillsAdmin()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 21`** (2 nodes): `page.js`, `SocialAdmin()`
+- **Thin community `Community 25`** (2 nodes): `page.js`, `SocialAdmin()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 22`** (2 nodes): `page.js`, `TeamAdmin()`
+- **Thin community `Community 26`** (2 nodes): `page.js`, `TeamAdmin()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 23`** (2 nodes): `page.js`, `UsersAdmin()`
+- **Thin community `Community 27`** (2 nodes): `page.js`, `UsersAdmin()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 24`** (2 nodes): `ContactForm()`, `ContactForm.js`
+- **Thin community `Community 28`** (2 nodes): `ContactForm()`, `ContactForm.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 25`** (2 nodes): `Footer.js`, `Footer()`
+- **Thin community `Community 29`** (2 nodes): `JsonLdScript.js`, `JsonLdScript()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 26`** (2 nodes): `MobileCarousel.js`, `MobileCarousel()`
+- **Thin community `Community 30`** (2 nodes): `MobileCarousel.js`, `MobileCarousel()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 27`** (2 nodes): `Navbar.js`, `Navbar()`
+- **Thin community `Community 31`** (2 nodes): `Navbar.js`, `Navbar()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 28`** (2 nodes): `ProjectGrid.js`, `ProjectGrid()`
+- **Thin community `Community 32`** (2 nodes): `RichTextEditor.js`, `RichTextEditor()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 29`** (2 nodes): `RichTextEditor.js`, `RichTextEditor()`
+- **Thin community `Community 33`** (2 nodes): `MediaPicker.js`, `MediaPicker()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 30`** (2 nodes): `SmartImage.js`, `SmartImage()`
+- **Thin community `Community 34`** (2 nodes): `page.js`, `GraphicDesignPage()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 31`** (2 nodes): `page.js`, `GraphicDesignPage()`
+- **Thin community `Community 35`** (2 nodes): `page.js`, `Login()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 32`** (2 nodes): `page.js`, `Login()`
+- **Thin community `Community 36`** (2 nodes): `page.js`, `MetaAdsPage()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 33`** (2 nodes): `page.js`, `MetaAdsPage()`
+- **Thin community `Community 37`** (2 nodes): `page.js`, `WordPressDevPage()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 34`** (2 nodes): `page.js`, `UiDesignPage()`
+- **Thin community `Community 38`** (2 nodes): `supabase.js`, `getSupabaseAdmin()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 35`** (2 nodes): `page.js`, `WordPressDevPage()`
+- **Thin community `Community 39`** (2 nodes): `main()`, `add-service-column.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 36`** (2 nodes): `main()`, `add-service-column.js`
+- **Thin community `Community 40`** (1 nodes): `eslint.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 37`** (1 nodes): `eslint.config.mjs`
+- **Thin community `Community 41`** (1 nodes): `next.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 38`** (1 nodes): `next.config.mjs`
+- **Thin community `Community 42`** (1 nodes): `postcss.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 39`** (1 nodes): `postcss.config.mjs`
+- **Thin community `Community 43`** (1 nodes): `servicePageConfigs.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 40`** (1 nodes): `servicePageConfigs.js`
+- **Thin community `Community 44`** (1 nodes): `cmsFallbacks.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 41`** (1 nodes): `supabase.js`
+- **Thin community `Community 45`** (1 nodes): `supabaseClient.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 42`** (1 nodes): `supabaseClient.js`
+- **Thin community `Community 46`** (1 nodes): `fix-jsx.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 43`** (1 nodes): `fix-jsx.js`
+- **Thin community `Community 47`** (1 nodes): `migrate.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 44`** (1 nodes): `migrate.js`
+- **Thin community `Community 48`** (1 nodes): `README.md`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 45`** (1 nodes): `README.md`
+- **Thin community `Community 49`** (1 nodes): `AGENTS.md`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 46`** (1 nodes): `AGENTS.md`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 47`** (1 nodes): `CLAUDE.md`
+- **Thin community `Community 50`** (1 nodes): `CLAUDE.md`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `DELETE()` connect `Community 0` to `Community 1`?**
-  _High betweenness centrality (0.045) - this node is a cross-community bridge._
-- **Why does `deleteRowById()` connect `Community 1` to `Community 0`?**
-  _High betweenness centrality (0.041) - this node is a cross-community bridge._
-- **Are the 4 inferred relationships involving `GET()` (e.g. with `requireAdmin()` and `isValidPageSlug()`) actually correct?**
-  _`GET()` has 4 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 2 inferred relationships involving `POST()` (e.g. with `requireAdmin()` and `GET()`) actually correct?**
-  _`POST()` has 2 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 2 inferred relationships involving `DELETE()` (e.g. with `requireAdmin()` and `deleteRowById()`) actually correct?**
-  _`DELETE()` has 2 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 2 inferred relationships involving `PUT()` (e.g. with `requireAdmin()` and `isValidPageSlug()`) actually correct?**
-  _`PUT()` has 2 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `About Page`, `Graphic Design Service`, `UI/UX Design Service` to the rest of the system?**
-  _6 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `GET()` connect `Community 0` to `Community 1`, `Community 3`, `Community 4`?**
+  _High betweenness centrality (0.216) - this node is a cross-community bridge._
+- **Why does `generateMetadata()` connect `Community 1` to `Community 8`, `Community 2`, `Community 4`?**
+  _High betweenness centrality (0.142) - this node is a cross-community bridge._
+- **Are the 8 inferred relationships involving `GET()` (e.g. with `POST()` and `getYouTubeEmbedUrl()`) actually correct?**
+  _`GET()` has 8 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 4 inferred relationships involving `POST()` (e.g. with `GET()` and `requireAdmin()`) actually correct?**
+  _`POST()` has 4 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 4 inferred relationships involving `PUT()` (e.g. with `requireAdmin()` and `revalidatePublicPages()`) actually correct?**
+  _`PUT()` has 4 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 3 inferred relationships involving `DELETE()` (e.g. with `requireAdmin()` and `revalidatePublicPages()`) actually correct?**
+  _`DELETE()` has 3 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 3 inferred relationships involving `generateMetadata()` (e.g. with `toMetadata()` and `getPageMeta()`) actually correct?**
+  _`generateMetadata()` has 3 INFERRED edges - model-reasoned connections that need verification._

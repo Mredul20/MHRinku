@@ -1,5 +1,17 @@
 import { NextResponse } from "next/server";
+import { getCanonicalUrl } from "@/lib/pageMeta";
 import { getPageHtml, isValidPageSlug } from "@/lib/pageHtml";
+
+function withCanonical(html, slug) {
+  const canonicalPath = slug === "index" ? "/" : `/${slug}.html`;
+  const canonicalTag = `<link rel="canonical" href="${getCanonicalUrl(canonicalPath)}">`;
+
+  if (/<link\s+[^>]*rel=["']canonical["'][^>]*>/i.test(html)) {
+    return html.replace(/<link\s+[^>]*rel=["']canonical["'][^>]*>/i, canonicalTag);
+  }
+
+  return html.replace(/<\/head>/i, `  ${canonicalTag}\n</head>`);
+}
 
 export async function GET(_request, { params }) {
   const resolvedParams = await params;
@@ -14,7 +26,7 @@ export async function GET(_request, { params }) {
 
   try {
     const { html } = await getPageHtml(slug);
-    return new NextResponse(html, {
+    return new NextResponse(withCanonical(html, slug), {
       status: 200,
       headers: {
         "Content-Type": "text/html; charset=utf-8",

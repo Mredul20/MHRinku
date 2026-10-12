@@ -5,7 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabaseClient";
 
-const isAdminUser = (nextUser) => nextUser?.user_metadata?.role === "admin";
+const isAdminUser = (nextUser) => nextUser?.app_metadata?.role === "admin";
 
 export default function AdminLayout({ children }) {
   const [user, setUser] = useState(null);
@@ -53,6 +53,9 @@ export default function AdminLayout({ children }) {
     { name: "Blog Posts",   href: "/admin/blog",        icon: "article" },
     { name: "Projects",     href: "/admin/projects",    icon: "folder" },
     { name: "Products",     href: "/admin/products",    icon: "extension" },
+    { name: "Services",     href: "/admin/services",    icon: "design_services" },
+    { name: "Stats",        href: "/admin/site-stats",  icon: "query_stats" },
+    { name: "Skills",       href: "/admin/skills",      icon: "bar_chart" },
     { name: "Reviews",      href: "/admin/reviews",     icon: "format_quote" },
     { name: "Our Team",     href: "/admin/team",        icon: "groups" },
     { name: "Contacts",     href: "/admin/contacts",    icon: "inbox" },

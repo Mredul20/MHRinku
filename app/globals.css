@@ -105,6 +105,46 @@
     transform: translateY(-4px);
     transition: all 0.3s ease;
   }
+  @keyframes serviceCardReveal {
+    0% {
+      opacity: 0;
+      transform: translateX(42px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes serviceCardGlow {
+    0%, 100% {
+      border-color: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 0 0 rgba(198, 167, 94, 0);
+    }
+    50% {
+      border-color: rgba(198, 167, 94, 0.32);
+      box-shadow: 0 18px 45px rgba(198, 167, 94, 0.12);
+    }
+  }
+  .service-card-animate {
+    opacity: 0;
+    animation:
+      serviceCardReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+      serviceCardGlow 3.8s ease-in-out infinite;
+  }
+  @keyframes projectCardReveal {
+    0% {
+      opacity: 0;
+      transform: translateX(36px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  .project-card-animate {
+    opacity: 0;
+    animation: projectCardReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
   .dropdown-menu {
     opacity: 0; visibility: hidden; transform: translateY(8px);
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -120,9 +160,14 @@
     overflow-x: hidden;
   }
 
-  .floating-logo,
   .hero-glow {
     display: none !important;
+  }
+
+  .floating-logo {
+    display: block !important;
+    max-width: 68px !important;
+    opacity: 0.12;
   }
 
   .floating-card {

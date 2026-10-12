@@ -1,6 +1,7 @@
 import { requireAdmin } from "@/lib/adminAuth";
 import { supabaseAdmin } from "@/lib/supabase";
 import { NextResponse } from "next/server";
+import { revalidatePublicPages } from "@/lib/publicCache";
 
 // GET /api/site-settings – fetch all settings (or a specific key via ?key=xxx)
 export async function GET(request) {
@@ -46,5 +47,6 @@ export async function PUT(request) {
     .single();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  revalidatePublicPages();
   return NextResponse.json(data);
 }

@@ -1,12 +1,17 @@
+import { cache } from "react";
 import { notFound } from "next/navigation";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import SmartImage from "../../components/SmartImage";
+import { getCanonicalUrl } from "@/lib/pageMeta";
+import { normalizeImage } from "@/lib/validators";
 import { supabaseAdmin } from "@/lib/supabase";
 
-export const dynamic = "force-dynamic";
+export async function generateStaticParams() {
+  return [];
+}
 
-async function getBlog(slug) {
+const getBlog = cache(async (slug) => {
   try {
     let { data, error } = await supabaseAdmin
       .from("blogs")
@@ -29,12 +34,16 @@ async function getBlog(slug) {
       error = result.error;
     }
 
-    if (error) return null;
-    return data;
+    if (error || !data) return null;
+
+    return {
+      ...data,
+      featuredImage: normalizeImage(data.featuredImage).url,
+    };
   } catch {
     return null;
   }
-}
+});
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -43,6 +52,7 @@ export async function generateMetadata({ params }) {
   return {
     title: blog.metaTitle || blog.title,
     description: blog.metaDescription || "",
+    alternates: { canonical: getCanonicalUrl(`/blog/${slug}`) },
     openGraph: {
       title: blog.metaTitle || blog.title,
       description: blog.metaDescription || "",
@@ -67,10 +77,12 @@ export default async function BlogPostPage({ params }) {
           </div>
         )}
         <div className="max-w-3xl mx-auto px-6">
-          <p className="text-xs text-muted uppercase tracking-widest mb-4">
-            {new Date(blog.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-          </p>
-          <h1 className="text-3xl md:text-5xl font-black text-white mb-10 leading-tight">{blog.title}</h1>
+          {blog.created_at && (
+            <p className="text-xs text-muted uppercase tracking-widest mb-4">
+              {new Date(blog.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+            </p>
+          )}
+          <h1 className="text-[26px] md:text-[44px] font-black text-white mb-10 leading-tight">{blog.title}</h1>
           <article
             className="prose prose-invert prose-lg max-w-none text-slate-300 leading-relaxed"
             dangerouslySetInnerHTML={{ __html: blog.content }}

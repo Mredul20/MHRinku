@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { normalizeImage } from "@/lib/validators";
 
 export default function SmartImage({
   alt = "",
@@ -9,12 +10,13 @@ export default function SmartImage({
   width = 800,
   ...props
 }) {
-  if (!src) return null;
+  const image = normalizeImage(src);
+  if (!image.url) return null;
 
   return (
     <Image
-      src={src}
-      alt={alt}
+      src={image.url}
+      alt={alt || image.alt_text || ""}
       width={width}
       height={height}
       sizes={sizes}
