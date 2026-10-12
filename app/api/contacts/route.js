@@ -6,7 +6,6 @@ const CONTACT_SERVICES = new Set([
   "Graphic Design",
   "Web Design",
   "Ads Management",
-  "SEO",
   "Full Package",
 ]);
 const MAX_BODY_BYTES = 16 * 1024;

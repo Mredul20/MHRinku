@@ -62,7 +62,6 @@ export const servicePageConfigs = {
     relatedServices: [
       { href: "/web-design-services-bangladesh", title: "Web Design Services Bangladesh", description: "WordPress and Shopify website design built for speed and easy editing." },
       { href: "/graphic-design-services-bangladesh", title: "Graphic Design Services Bangladesh", description: "Logos, brand identity, and marketing creatives for Bangladesh businesses." },
-      { href: "/seo", title: "SEO Service Bangladesh", description: "Technical and on-page SEO to help your pages rank for the right searches." },
     ],
     overviewTitle: "Interfaces That Feel Clear And Useful",
     overview: "Good UI removes friction. I focus on hierarchy, responsiveness, accessibility, and user paths that help people take action.",
@@ -105,7 +104,6 @@ export const servicePageConfigs = {
     relatedServices: [
       { href: "/web-design-services-bangladesh", title: "Web Design Services Bangladesh", description: "Landing pages and websites built to support paid campaigns and conversions." },
       { href: "/graphic-design-services-bangladesh", title: "Graphic Design Services Bangladesh", description: "Ad creatives, banners, and social media graphics for campaigns." },
-      { href: "/seo", title: "SEO Service Bangladesh", description: "SEO fundamentals that improve landing page quality and organic reach." },
     ],
     caseStudies: [
       { href: "/case-studies#meta-ads-local-brand-bangladesh", title: "Meta Ads Campaign for a Local Bangladesh Brand", result: "4.2x return on ad spend" },
@@ -165,7 +163,6 @@ export const servicePageConfigs = {
     relatedServices: [
       { href: "/web-design-services-bangladesh", title: "Web Design Services Bangladesh", description: "Compare WordPress vs Shopify and choose the right platform." },
       { href: "/shopify-website-design-bangladesh", title: "Shopify Website Design Bangladesh", description: "E-commerce store design for product businesses in Bangladesh." },
-      { href: "/seo", title: "SEO Service Bangladesh", description: "On-page and technical SEO to help your WordPress site get found." },
     ],
     caseStudies: [
       { href: "/case-studies#wordpress-service-business-dhaka", title: "WordPress Website for a Dhaka Service Business", result: "+65% organic contact requests" },
@@ -245,40 +242,6 @@ export const servicePageConfigs = {
       { q: "Do you build Shopify sites?", a: "Yes. Shopify is the best fit when you sell physical products and need a dedicated checkout and inventory system." },
       { q: "Can I edit products myself?", a: "Yes. Product names, prices, descriptions, collections, and images can be managed from Shopify." },
       { q: "Can you improve an existing Shopify store?", a: "Yes. I can improve storefront structure, product pages, campaign pages, and speed basics." },
-    ],
-  },
-  seo: {
-    service: "seo",
-    imageSettingKey: "seo_image",
-    eyebrow: "SEO Service Bangladesh",
-    title: <>SEO <span className="text-primary">Service Bangladesh.</span></>,
-    schemaTitle: "SEO Service Bangladesh",
-    description: "SEO service in Bangladesh for technical fixes, on-page optimization, and content structure that help search engines understand and trust your website.",
-    icon: "query_stats",
-    heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
-    relatedServices: [
-      { href: "/web-design-services-bangladesh", title: "Web Design Services Bangladesh", description: "SEO-friendly WordPress and Shopify websites built for Bangladesh." },
-      { href: "/wordpress-web-design-bangladesh", title: "WordPress Web Design Bangladesh", description: "Editable sites with clean structure and SEO fundamentals from launch." },
-      { href: "/ads-expert-bangladesh", title: "Ads Expert Bangladesh", description: "Paid campaigns to amplify content and capture search intent faster." },
-    ],
-    overviewTitle: "SEO Foundations For Sustainable Traffic",
-    overview: "Search performance starts with clean structure, indexable pages, useful content, and strong internal signals.",
-    portfolioTitle: "SEO Related Projects",
-    features: [
-      { icon: "travel_explore", title: "Technical SEO", text: "Indexability, crawlability, metadata, speed basics, and structured content checks." },
-      { icon: "article", title: "On-Page SEO", text: "Titles, headings, copy structure, internal links, and intent matching." },
-      { icon: "analytics", title: "SEO Planning", text: "Practical content and page recommendations tied to business goals." },
-    ],
-    process: [
-      { title: "Audit", text: "Review pages, technical blockers, metadata, and search intent fit." },
-      { title: "Prioritize", text: "Rank fixes by likely impact and implementation effort." },
-      { title: "Optimize", text: "Improve page structure, content, and technical basics." },
-      { title: "Monitor", text: "Track changes and identify next opportunities." },
-    ],
-    faq: [
-      { q: "Do you guarantee rankings?", a: "No one can honestly guarantee rankings, but the work improves search readiness and user relevance." },
-      { q: "Can you optimize service pages?", a: "Yes. Service page structure, metadata, and internal links are core SEO work." },
-      { q: "Do you provide audits?", a: "Yes. Audits can identify crawl, content, performance, and page-level issues." },
     ],
   },
 };
