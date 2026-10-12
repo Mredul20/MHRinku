@@ -68,7 +68,7 @@ export default function TestimonialsCarousel({ reviews }) {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_22%,rgba(198,167,94,0.16),transparent_34%),linear-gradient(120deg,rgba(255,255,255,0.03),transparent_52%)]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="relative min-h-[30rem] overflow-hidden rounded-[2px] border border-white/10 bg-surface px-7 py-12 shadow-[0_30px_90px_rgba(0,0,0,0.42)] md:px-14 lg:min-h-[31rem] lg:px-20 lg:py-16">
+        <div className="relative min-h-[30rem] overflow-hidden rounded-3xl border border-white/10 bg-surface px-7 py-12 shadow-[0_30px_90px_rgba(0,0,0,0.42)] md:px-14 lg:min-h-[31rem] lg:px-20 lg:py-16">
           <div className="mb-12">
             <div className="mb-3 h-1 w-11 bg-primary" />
             <p className="text-base font-black tracking-tight text-white">Client Reviews</p>
