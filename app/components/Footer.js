@@ -146,17 +146,8 @@ export default async function Footer() {
             </ul>
           </div>
         </div>
-        <div className="pt-8 border-t border-slate-200 dark:border-slate-800 text-sm text-slate-500">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>© 2024 Mobarak Hossain Rinku. All rights reserved.</p>
-            <p>Designed with passion and precision.</p>
-          </div>
-          <div className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-slate-500" itemScope itemType="https://schema.org/LocalBusiness">
-            <span itemProp="name">MHRinku</span>
-            <span itemProp="telephone">+880 1786-029947</span>
-            <span itemProp="email">contact@mhrinku.com</span>
-            <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress"><span itemProp="addressLocality">Dhaka</span>, <span itemProp="addressCountry">Bangladesh</span></span>
-          </div>
+        <div className="pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-sm text-slate-500">
+          <p>© 2026 Mobarak Hossain Rinku. All rights reserved.</p>
         </div>
       </div>
     </footer>
